@@ -1,0 +1,18 @@
+#!/bin/bash
+
+#PBS -N ace_train                
+#PBS -q smdnhts                          
+#PBS -l select=1:ncpus=48:ngpus=1
+#PBS -j oe      
+
+# Load necessary modules
+module purge
+
+source ~/miniconda3/etc/profile.d/conda.sh
+conda activate ace
+
+# Move to the working directory
+cd $PBS_O_WORKDIR
+
+pacemaker input.yaml
+

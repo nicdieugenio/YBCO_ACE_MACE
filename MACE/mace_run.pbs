@@ -1,0 +1,72 @@
+#!/bin/bash
+
+#PBS -N mace_train                
+#PBS -q smdnhts                          
+#PBS -l select=1:ncpus=48:ngpus=4
+#PBS -j oe      
+
+# Load modules
+module purge
+module load rocm/6.1.2--spack--0.23.1
+module load openmpi
+
+# Activate Conda environment
+source ~/miniconda3/etc/profile.d/conda.sh
+conda activate mace_roc
+
+cd $PBS_O_WORKDIR
+
+echo "Starting job at $(date)"
+echo "Host: $(hostname)"
+
+# Free GPU memory
+python3 -c "import torch; torch.cuda.empty_cache()"
+
+# Check GPU status
+rocm-smi
+
+# OpenMP threads
+export OMP_NUM_THREADS=4
+
+# Map processes to AMD GPUs
+export HIP_VISIBLE_DEVICES=0,1,2,3
+
+# Run MACE training on 4 AMD GPUs
+torchrun --standalone --nnodes=1 --nproc_per_node=4 /hpc/home/join16/miniconda3/envs/mace_roc/lib/python3.10/site-packages/mace/cli/run_train.py \
+    --name='ybco_mace' \
+    --seed=14 \
+    --train_file='ybco_mace.xyz' \
+    --valid_fraction=0.05 \
+    --E0s="{56: -691.59822690945, 39: -1038.5791641381, 29: -1306.07919131771, 8: -430.0849958066}" \
+    --model='MACE' \
+    --hidden_irreps="128x0e" \
+    --num_interactions=2 \
+    --max_L=0 \
+    --r_max=6.5 \
+    --batch_size=6 \
+    --distributed \
+    --max_num_epochs=600 \
+    --ema \
+    --ema_decay=0.99 \
+    --amsgrad \
+    --default_dtype='float32' \
+    --pair_repulsion \
+    --distance_transform='Agnesi' \
+    --interaction='RealAgnosticResidualInteractionBlock' \
+    --interaction_first='RealAgnosticDensityResidualInteractionBlock' \
+    --device='cuda' \
+    --swa \
+    --start_swa=425 \
+    --energy_key='REF_energy' \
+    --forces_key='REF_forces' \
+    --stress_key='REF_stress' \
+    --scaling='rms_forces_scaling' \
+    --log_level='INFO' \
+    --loss='weighted' \
+    --forces_weight=10.0 \
+    --energy_weight=1.0 \
+    --clip_grad=5.0 \
+    --weight_decay=5e-7 \
+    --restart_latest
+
+
