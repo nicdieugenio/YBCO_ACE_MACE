@@ -1,6 +1,6 @@
 ## YBCO_MACE Potential
 
-To use the `YBCO_ACE` potential, LAMMPS must be compiled with the **pacemaker**: 
+To use the `YBCO_ACE` potential, LAMMPS must be compiled with **pacemaker**: 
 
 https://pacemaker.readthedocs.io/en/latest/
 
