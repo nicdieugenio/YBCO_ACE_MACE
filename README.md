@@ -7,7 +7,7 @@ In order to clone the repository, git lfs needs to be installed:
 git lfs install
 
 ```
-Then clone the repository with `git clone `. In order to utilise the potentials in LAMMPS, you must compile LAMMPS for use with ACE/MACE. 
+Then clone the repository with `git clone https://github.com/nicdieugenio/YBCO_ACE_MACE.git`. In order to utilise the potentials in LAMMPS, you must compile LAMMPS for use with ACE/MACE. 
 
 Instructions on how to compile ACE with the **pacemaker** can be found for both CPU and GPU at: https://pacemaker.readthedocs.io/en/latest/pacemaker/quickstart/
 
