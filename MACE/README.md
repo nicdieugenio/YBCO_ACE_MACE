@@ -1,6 +1,6 @@
 ## YBCO_MACE Potential
 
-To use the `YBCO_MACE` potential, LAMMPS must be compiled with the **symmetrix** package: 
+To use the `YBCO_MACE` potential, LAMMPS must be compiled with the **pair_symmetrix** package: 
 
 https://github.com/wcwitt/symmetrix
 
