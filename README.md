@@ -8,7 +8,7 @@ git lfs install
 ```
 Then clone the repository with `git clone https://github.com/nicdieugenio/YBCO_ACE_MACE.git`. In order to utilise the potentials in LAMMPS, you must compile LAMMPS for use with ACE/MACE. 
 
-Instructions on how to compile ACE with the **pacemaker** can be found for both CPU and GPU at: https://pacemaker.readthedocs.io/en/latest/pacemaker/quickstart/
+Instructions on how to compile ACE with **pacemaker** can be found for both CPU and GPU at: https://pacemaker.readthedocs.io/en/latest/pacemaker/quickstart/
 
 Instructions on how to compile MACE with the **pair_symmetrix** package can be found for both CPU and GPU at: https://github.com/wcwitt/symmetrix/blob/main/pair_symmetrix/README.md
 
