@@ -20,7 +20,6 @@ mass 4 88.90585    # Y
 
 pair_style symmetrix/mace
 pair_coeff * * ybco_mace-8-29-39-56.json Ba Cu O Y
-
 ```
 
 The training script for the `YBCO_MACE` model is provided (`mace_run.pbs`), and the training database is included as `ybco_mace.xyz`. Energies are in eV, forces in eV/Å, and virial stress in eV. If you were to add any configurations, remember to add a key in the header section to energies, forces and stress (here, `REF_`), as MACE does not recognize them otherwise.
