@@ -1,5 +1,5 @@
 # YBCO_ACE_MACE
-Machine-Learned Interatomic Potentials for YBCO, trained using ACE and MACE. All potentials have been trained on the same DFT data from CP2K. The DFT input file used to collect the training data is included as `CP2K_input`. All simulations were performed with CP2K version 2024.1.
+Machine-Learned Interatomic Potentials for YBa₂Cu₃O₇₋ₓ (YBCO), trained using ACE and MACE. All potentials have been trained on the same DFT data from CP2K. The DFT input file used to collect the training data is included as `CP2K_input`. All simulations were performed with CP2K version 2024.1.
 
 In order to clone the repository, git lfs needs to be installed:
 
