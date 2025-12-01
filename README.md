@@ -16,7 +16,7 @@ Overall, we recommend that smaller-scale studies focused on thermodynamic proper
 
 # References
 
-If you use this potentials, please cite our paper:
+If you use these potentials, please cite our paper:
 
 ```
 @misc{dieugenio2025machinelearnedinteratomicpotentialsstructural,
